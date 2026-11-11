@@ -4,13 +4,11 @@ Missed-call callback routing for Issabel PBX (chan_sip). No module to install: o
 
 برگشت تماس به داخلیِ تماس‌گیرنده در ایزابل (chan_sip)، بدون نصب ماژول: یک اسکریپت و یک تکه دایال‌پلن.
 
-## What it does / چه می‌کند
+## What it does
 
 An extension calls a customer who does not answer. When the customer calls back within 3 hours, they hear a prompt: press **1** to reach the extension that called them; any other key or a 5 s timeout sends them to the normal inbound route (IVR). Callers with no recent missed call go straight to the normal route.
 
-از داخل شرکت به کسی زنگ می‌زنید و جواب نمی‌دهد. اگر تا ۳ ساعت بعد خودش تماس بگیرد، پیامی می‌شنود: با **۱** به همان داخلی وصل می‌شود؛ با هر کلید دیگر یا ۵ ثانیه سکوت به مسیر عادی (IVR) می‌رود. بقیهٔ تماس‌گیرنده‌ها مستقیم به مسیر عادی می‌روند.
-
-## Install / نصب
+## Install
 
 Written on an Issabel server running Asterisk 18 with chan_sip. Back up `/etc/asterisk/extensions_custom.conf` first.
 
@@ -20,7 +18,7 @@ Written on an Issabel server running Asterisk 18 with chan_sip. Back up `/etc/as
 4. Run `asterisk -rx "dialplan reload"`.
 5. In the trunk's **PEER Details** add `context=from-trunk-callback` and Apply. To undo, remove that line.
 
-## Limits / محدودیت‌ها
+## Limits
 
 - The lookup matches the last 10 digits of the caller ID, which suits Iranian numbering; adjust `lastcaller.sh` for other plans.
 - If an extension's voicemail answers before the 20 s ring ends, the caller lands in voicemail instead of the IVR.
